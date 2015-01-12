@@ -1,0 +1,53 @@
+{
+  "title": "language-codes",
+  "name": "ISO 639-1 and 693-2 language codes",
+  "sources": [
+    {
+      "name":"Library of Congress"
+      "web": "http://www.loc.gov/standards/iso639-2/iso639jac.html"
+  ],
+  "licenses": [
+	  {
+		  "id": "odc-pddl",
+		  "name": "Public Domain Dedication and License",
+		  "version": "1.0",
+		  "url": "http://opendatacommons.org/licenses/pddl/1.0/"
+	  }
+	],
+  "resources": [
+    {
+      "name": "language-codes.csv",
+      "path": "language-codes.csv",
+      "mediatype": "text/csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "alpha3 b",
+            "description":"3 letter alpha-3 bibliographic code",
+            "type": "string"
+          },
+          {
+            "name": "alpha3 t",
+            "description":"3 letter alpha-3 terminologic code (when given)",
+            "type": "number"
+          },
+          {
+            "name": "alpha2",
+            "description":"2 letter alpha-2 code (when given)",
+            "type": "number"
+          },
+          {
+            "name": "english",
+            "description":"English name of language",
+            "type": "string"
+          },
+          {
+            "name": "french",
+            "description":"French name of language",
+            "type": "string"
+          }
+        ]
+      }
+    }
+  ]
+}
