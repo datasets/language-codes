@@ -3,8 +3,9 @@
   "name": "ISO 639-1 and 693-2 language codes",
   "sources": [
     {
-      "name":"Library of Congress"
+      "name":"Library of Congress",
       "web": "http://www.loc.gov/standards/iso639-2/iso639jac.html"
+    }
   ],
   "licenses": [
 	  {
@@ -22,14 +23,14 @@
       "schema": {
         "fields": [
           {
-            "name": "alpha3 b",
+            "name": "alpha3-b",
             "description":"3 letter alpha-3 bibliographic code",
             "type": "string"
           },
           {
-            "name": "alpha3 t",
+            "name": "alpha3-t",
             "description":"3 letter alpha-3 terminologic code (when given)",
-            "type": "number"
+            "type": "string"
           },
           {
             "name": "alpha2",
