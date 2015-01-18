@@ -18,7 +18,26 @@
   "resources": [
     {
       "name": "language-codes.csv",
-      "path": "language-codes.csv",
+      "path": "data/language-codes.csv",
+      "mediatype": "text/csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "alpha2",
+            "description":"2 letter alpha-2 code",
+            "type": "string"
+          },
+          {
+            "name": "english",
+            "description":"English name of language",
+            "type": "string"
+          }
+	]
+      }
+    },
+    {
+      "name": "language-codes-full.csv",
+      "path": "data/language-codes-full.csv",
       "mediatype": "text/csv",
       "schema": {
         "fields": [
@@ -35,7 +54,7 @@
           {
             "name": "alpha2",
             "description":"2 letter alpha-2 code (when given)",
-            "type": "number"
+            "type": "string"
           },
           {
             "name": "english",
