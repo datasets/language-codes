@@ -17,7 +17,7 @@
 	],
   "resources": [
     {
-      "name": "language-codes.csv",
+      "name": "language-codes",
       "path": "data/language-codes.csv",
       "mediatype": "text/csv",
       "schema": {
@@ -36,7 +36,7 @@
       }
     },
     {
-      "name": "language-codes-full.csv",
+      "name": "language-codes-full",
       "path": "data/language-codes-full.csv",
       "mediatype": "text/csv",
       "schema": {
