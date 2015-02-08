@@ -6,10 +6,13 @@ Data is taken from the [Library of Congress](http://www.loc.gov/standards/iso639
 as ISO 639-2 Registration Authority.
 
 ### data/language-codes.csv 
+
 This file contains the 184 languages with an  __ISO 639-1__ (alpha 2 / two letter) code and their English name. 
 
 ### data/language-codes-full.csv 
+
 This file is more exhaustive. 
+
 It contains all languages with __ISO 639-2__ ( alpha 3 / three letter) codes, the respective ISO 639-1 code (if present), as well as English and French name of the language.
 
 There is two versions of the three letter codes: bibliographic and terminologic. There is a bibliographic code for each language and only a few languages with a terminologic code.
@@ -37,5 +40,4 @@ that no rights can subsist in this collection.
 
 However, if you intended to use these data in a public or commercial product, please
 check the original sources for any specific restrictions.
-
 
