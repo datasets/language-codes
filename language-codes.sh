@@ -35,7 +35,7 @@ fi
 set -u
 
 # Internal vars
-SELF="$0"
+SELF="${BASH_SOURCE[0]}"
 SELF_NAME=$(basename "${SELF}")
 SRC="${DEST}/src"
 COPY="source.txt"
