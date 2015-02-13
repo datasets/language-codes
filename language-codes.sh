@@ -100,12 +100,12 @@ cat "${SRC}/${COPY}" | awk -F'|' 'NR==1 { sub(/^\xef\xbb\xbf/, "") } $3 { printf
 echo '"alpha3-b","alpha2","English"' > "${DEST}/language-codes-3b2.csv"
 cat "${SRC}/${COPY}" | awk -F'|' 'NR==1 { sub(/^\xef\xbb\xbf/, "") } $3 { printf "\"%s\",\"%s\",\"%s\"\n", $1, $3, $4 }' | sort >> "${DEST}/language-codes-3b2.csv"
 
-if [[ ! ${KEEP} == true ]]; then
-    # Clean up
-    rm -rf "${SRC}"
-else
+if [[ ${KEEP} == true ]]; then
     # Log source location
     echo "${COPY} created from ${FILE}" > "${SRC}/${LOG}"
+else
+    # Clean up
+    rm -rf "${SRC}"
 fi
 
 exit 0
