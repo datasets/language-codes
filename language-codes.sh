@@ -4,13 +4,13 @@
 
 language-codes() {
 
-    OPTIND=1
     DEST="data"
     FILE="http://www.loc.gov/standards/iso639-2/ISO-639-2_utf-8.txt"
 
     # Arguments
     FORCE=false
     KEEP=false
+    OPTIND=1
     while getopts ":fk" OPT; do
         case "${OPT}" in
         f)
