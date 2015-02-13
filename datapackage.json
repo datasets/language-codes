@@ -28,7 +28,7 @@
             "type": "string"
           },
           {
-            "name": "english",
+            "name": "English",
             "description":"English name of language",
             "type": "string"
           }
@@ -57,12 +57,12 @@
             "type": "string"
           },
           {
-            "name": "english",
+            "name": "English",
             "description":"English name of language",
             "type": "string"
           },
           {
-            "name": "french",
+            "name": "French",
             "description":"French name of language",
             "type": "string"
           }
