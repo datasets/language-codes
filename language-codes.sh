@@ -90,15 +90,15 @@ fi
 
 # Format all records and fields
 echo '"alpha3-b","alpha3-t","alpha2","English","French"' > "${DEST}/language-codes-full.csv"
-cat "${SRC}/${COPY}" | awk -F'|' -v QQ='"' -v OFS='","' '$1=$1 { print QQ $0 QQ }' >> "${DEST}/language-codes-full.csv"
+cat "${SRC}/${COPY}" | awk -F'|' -v QQ='"' -v OFS='","' 'NR==1 { sub(/^\xef\xbb\xbf/, "") } $1=$1 { print QQ $0 QQ }' >> "${DEST}/language-codes-full.csv"
 
 # Only alpha2
 echo '"alpha2","English"' > "${DEST}/language-codes.csv"
-cat "${SRC}/${COPY}" | awk -F'|' '$3 { printf "\"%s\",\"%s\"\n", $3, $4 }' | sort >> "${DEST}/language-codes.csv"
+cat "${SRC}/${COPY}" | awk -F'|' 'NR==1 { sub(/^\xef\xbb\xbf/, "") } $3 { printf "\"%s\",\"%s\"\n", $3, $4 }' | sort >> "${DEST}/language-codes.csv"
 
 # Only alpha3-b with corresponding alpha2
 echo '"alpha3-b","alpha2","English"' > "${DEST}/language-codes-3b2.csv"
-cat "${SRC}/${COPY}" | awk -F'|' '$3 { printf "\"%s\",\"%s\",\"%s\"\n", $1, $3, $4 }' | sort >> "${DEST}/language-codes-3b2.csv"
+cat "${SRC}/${COPY}" | awk -F'|' 'NR==1 { sub(/^\xef\xbb\xbf/, "") } $3 { printf "\"%s\",\"%s\",\"%s\"\n", $1, $3, $4 }' | sort >> "${DEST}/language-codes-3b2.csv"
 
 if [[ ! ${KEEP} == true ]]; then
     # Clean up
