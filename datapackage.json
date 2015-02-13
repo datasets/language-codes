@@ -36,6 +36,30 @@
       }
     },
     {
+      "name": "language-codes-3b2",
+      "path": "data/language-codes-3b2.csv",
+      "mediatype": "text/csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "alpha3-b",
+            "description":"3 letter alpha-3 bibliographic code",
+            "type": "string"
+          },
+          {
+            "name": "alpha2",
+            "description":"2 letter alpha-2 code",
+            "type": "string"
+          },
+          {
+            "name": "English",
+            "description":"English name of language",
+            "type": "string"
+          }
+	]
+      }
+    },
+    {
       "name": "language-codes-full",
       "path": "data/language-codes-full.csv",
       "mediatype": "text/csv",
