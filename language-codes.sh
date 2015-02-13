@@ -104,6 +104,8 @@ language-codes() {
         rm -rf "${SRC}"
     fi
 
+    return 0
+
 }
 
 language-codes "$@"
