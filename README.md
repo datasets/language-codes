@@ -1,8 +1,8 @@
-Comprehensive language code information, consisting of ISO 639-2 and ISO 639-1.
+Comprehensive language code information, consisting of ISO 639-1, ISO 639-2 and IETF language types.
 
 ## Data
 
-Data is taken from the [Library of Congress](http://www.loc.gov/standards/iso639-2/iso639-2ra.html) as the ISO 639-2 Registration Authority.
+Data is taken from the [Library of Congress](http://www.loc.gov/standards/iso639-2/iso639-2ra.html) as the ISO 639-2 Registration Authority, and from the [Unicode Common Locale Data Repository](http://cldr.unicode.org/).
 
 ### data/language-codes.csv 
 
