@@ -92,6 +92,46 @@
           }
         ]
       }
+    },
+    {
+      "name": "ietf-language-tags",
+      "path": "data/ietf-language-tags.csv",
+      "note": "obtained from main folder of core.zip at http://www.unicode.org/Public/cldr",
+      "mediatype": "text/csv",
+      "schema": {
+        "fields": [
+          {
+            "name": "lang",
+            "description":"IANA/Unicode language-tag-extension",
+            "type": "string"
+          },
+          {
+            "name": "langType",
+            "description":"ISO 2 letter alpha-2 language code",
+            "type": "string"
+          },
+          {
+            "name": "territory",
+            "description":"ISO3166-1-Alpha-2 country code",
+            "type": "string"
+          },
+          {
+            "name": "revGenDate",
+            "description":"revision date (format ISO data)",
+            "type": "string"
+          },
+          {
+            "name": "defs",
+            "description":"number of definitions",
+            "type": "integer"
+          },
+          {
+            "name": "file",
+            "description":"file-name of the locale descriptor",
+            "type": "string"
+          }
+        ]
+      }
     }
   ]
 }

@@ -24,10 +24,16 @@ Example from [Wikipedia](https://en.wikipedia.org/wiki/ISO_639#Relations_between
 > [...] the German language (Part 1: `de`) has two codes in Part 2: `ger` (T code) and `deu` (B code), whereas there is only one code in Part 2, `eng`, for the English language.
 
 There are four special codes: *mul*, *und*, *mis*, *zxx*; and a reserved range *qaa-qtz*.
- 
+
+### data/ietf-language-tags.csv
+
+This file lists all IETF language tags of the official resource indicated by http://www.iana.org/assignments/language-tag-extensions-registry 
+that into the `/main` folder of http://www.unicode.org/Public/cldr/latest/core.zip (project [cldr.unicode.org](http://cldr.unicode.org)).
+
 ## Preparation
 
 This package includes a bash script to fetch current language code information and adjust the formatting.
+The file `ietf-language-tags.csv` is obtained with `ietf-lanGen.php`.
 
 ## License
 
