@@ -130,6 +130,11 @@
             "type": "integer"
           },
           {
+            "name": "dftLang",
+            "description":"indicate the default-language, as unicode-cldr",
+            "type": "boolean"
+          },
+          {
             "name": "file",
             "description":"file-name of the locale descriptor",
             "type": "string"
