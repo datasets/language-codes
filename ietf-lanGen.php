@@ -16,7 +16,13 @@ $cldrCoreDft = array_map( 'strtolower', $cldrCore['defaultContent'] );
 
 $dom = new DOMDocument;
 $n=0;
-print "lang,langType,territory,revGenDate,defs,dftLang,file";
+
+# create ietf-language-tags.csv and assign headers 
+$myfile = fopen("data/ietf-language-tags.csv", "w") or die("Unable to open file!");
+$txt = "lang,langType,territory,revGenDate,defs,dftLang,file";
+fwrite($myfile, $txt);
+fclose($myfile);
+
 foreach(scandir($dir) as $file) if (preg_match('/^(.+)\.xml$/',$file,$m)) {
     $lang = $m[1];
     $dom->load("$dir/$file");
@@ -28,7 +34,14 @@ foreach(scandir($dir) as $file) if (preg_match('/^(.+)\.xml$/',$file,$m)) {
     $revGenDate = preg_replace('/^[^\d]+(\d+\-\d+\-\d+).+$/','$1',$revGenDate);
     $isDftLang  = in_array(strtolower($lang),$cldrCoreDft)? '1': '0'; // yes or not
     $lang = strtr($lang,'_','-');
-    print "\n$lang,$langType,$territory,$revGenDate,$defs,$isDftLang,$file";
+		
+		# open ietf-languange-tags.csv and append data
+		$myfile = fopen("data/ietf-language-tags.csv", "a") or die("Unable to open file!");
+		$txt = "\n$lang,$langType,$territory,$revGenDate,$defs,$isDftLang,$file";
+		fwrite($myfile, $txt);
+		fclose($myfile);
+		
+    //print "\n$lang,$langType,$territory,$revGenDate,$defs,$isDftLang,$file";
     $n++;
 }
 // print "\n--- END: $n lang codes ---\n";
