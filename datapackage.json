@@ -4,17 +4,19 @@
   "sources": [
     {
       "name":"Library of Congress",
-      "web": "http://www.loc.gov/standards/iso639-2/iso639jac.html"
+      "path": "http://www.loc.gov/standards/iso639-2/iso639jac.html",
+      "title": "Library of Congress"
     },
     {
-      "name":"Unicode",
-      "web": "http://cldr.unicode.org/"
+      "name": "Unicode",
+      "path": "http://cldr.unicode.org/",
+      "title": "Unicode"
     }
   ],
   "licenses": [
 	  {
 		  "id": "odc-pddl",
-		  "name": "Public Domain Dedication and License",
+		  "name": "public-domain-dedication-and-license",
 		  "version": "1.0",
 		  "url": "http://opendatacommons.org/licenses/pddl/1.0/"
 	  }
