@@ -6,3 +6,6 @@ before_install:
   - rm -rf data/
 install: ./language-codes.sh
 script: php ietf-lanGen.php
+after_script:
+  - npm install data-cli --global
+  - data push
