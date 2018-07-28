@@ -1,4 +1,7 @@
 language: php
+branches:
+  only:
+  - master
 before_install:
   - wget http://www.unicode.org/Public/cldr/latest/core.zip
   - unzip core.zip
