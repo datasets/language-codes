@@ -1,6 +1,6 @@
 language: php
 before_install:
-  - curl http://www.unicode.org/Public/cldr/latest/core.zip -L -O core.zip
+  - wget http://www.unicode.org/Public/cldr/latest/core.zip
   - unzip core.zip
   - mv core/common/main/ ./
   - rm -rf data/
