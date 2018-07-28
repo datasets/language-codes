@@ -117,7 +117,7 @@
           },
           {
             "name": "territory",
-            "description":"ISO3166-1-Alpha-2 country code",
+            "description":"ISO3166-1-Alpha-2 country code or cldr territory code where 001 is the World and 150 is Europe",
             "type": "string"
           },
           {
