@@ -1,0 +1,4 @@
+language: php
+before_install: rm -rf data/
+install: ./language-codes.sh
+script: php ietf-lanGen.php
