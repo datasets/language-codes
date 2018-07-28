@@ -2,7 +2,7 @@ language: php
 before_install:
   - wget http://www.unicode.org/Public/cldr/latest/core.zip
   - unzip core.zip
-  - mv core/common/main/ ./
+  - mv common/main/ ./
   - rm -rf data/
 install: ./language-codes.sh
 script: php ietf-lanGen.php
