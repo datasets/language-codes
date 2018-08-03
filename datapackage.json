@@ -143,5 +143,31 @@
         ]
       }
     }
+  ],
+  "related": [
+    {
+      "title": "List of all countries (ISO 3166-1)",
+      "path": "/core/country-list",
+      "publisher": "core",
+      "formats": ["CSV", "JSON"]
+    },
+    {
+      "title": "Country codes",
+      "path": "/core/country-codes",
+      "publisher": "core",
+      "formats": ["CSV", "JSON"]
+    },
+    {
+      "title": "Continent codes",
+      "path": "/core/continent-codes",
+      "publisher": "core",
+      "formats": ["CSV", "JSON"]
+    },
+    {
+      "title": "UN-LOCODE Codelist",
+      "path": "/core/un-locode",
+      "publisher": "core",
+      "formats": ["CSV", "JSON"]
+    }
   ]
 }
