@@ -34,11 +34,11 @@ jobs:
     # Step 5: Remove unnecessary files
     - name: Remove unnecessary files
       run: |
-        find data/ -name "*.md" ! -name "README.md" -exec rm {} +
-        find data/ -name "main" ! -name "README.md" -exec rm {} +
-        find data/ -name "common" ! -name "README.md" -exec rm {} +
-        find data/ -name "LICENSE" ! -name "README.md" -exec rm {} +
-        find data/ -name "*.zip" -exec rm {} +
+        find . -name "*.md" ! -name "README.md" -exec rm -v {} +
+        find . -name "main" ! -name "README.md" -exec rm -v {} +
+        find . -name "common" ! -name "README.md" -exec rm -v {} +
+        find . -name "LICENSE" ! -name "README.md" -exec rm -v {} +
+        find . -name "*.zip" -exec rm -v {} +
 
     # Step 6: Commit and push the changes
     - name: Commit and Push
