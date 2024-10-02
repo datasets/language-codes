@@ -31,7 +31,16 @@ jobs:
     - name: Run PHP Script
       run: php scripts/ietf-lanGen.php
 
-    # Step 5: Commit and push the changes
+    # Step 5: Remove unnecessary files
+    - name: Remove unnecessary files
+      run: |
+        find data/ -name "*.md" ! -name "README.md" -exec rm {} /.
+        find data/ -name "main" ! -name "README.md" -exec rm {} /.
+        find data/ -name "common" ! -name "README.md" -exec rm {} /.
+        find data/ -name "LICENSE" ! -name "README.md" -exec rm {} /.
+        find data/ -name "*.zip" -exec rm {} /.
+
+    # Step 6: Commit and push the changes
     - name: Commit and Push
       run: |
         git config --global user.name "GitHub Action"
