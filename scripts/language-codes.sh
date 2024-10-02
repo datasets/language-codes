@@ -63,7 +63,7 @@ language-codes() {
     PROT=$(awk -F':\/\/' '$2 { print $1 }' <<< "${FILE}")
     case ${PROT} in
         http|https)
-            if curl -s "${FILE}" > "${SRC}/${COPY}" 2>/dev/null; then
+            if curl -L -A "Mozilla/5.0" -o "${SRC}/${COPY}" "${FILE}" > "${SRC}/${COPY}" 2>/dev/null; then
                 SUCCESS=true
             fi
             ;;
@@ -72,6 +72,17 @@ language-codes() {
                 SUCCESS=true
             fi
     esac
+
+    # Check if the source file exists and has content
+    if [[ -f "${SRC}/${COPY}" ]]; then
+        echo "Source file downloaded/copied successfully."
+        echo "Source file size: $(wc -c < "${SRC}/${COPY}") bytes"
+        echo "First 10 lines of source file:"
+        head -n 10 "${SRC}/${COPY}"
+    else
+        echo "Error: Source file not found or empty."
+        exit 1
+    fi
 
     # Sanity checks
     if [[ ${SUCCESS} != true ]]; then
@@ -85,17 +96,20 @@ language-codes() {
         return 1
     fi
 
-    # Format all records and fields
+    # Remove BOM from the file
+    sed -i '1s/^\xef\xbb\xbf//' "${SRC}/${COPY}"
+
+    # Full language codes
     echo '"alpha3-b","alpha3-t","alpha2","English","French"' > "${DEST}/language-codes-full.csv"
-    cat "${SRC}/${COPY}" | awk -F'|' -v QQ='"' -v OFS='","' 'NR==1 { sub(/^\xef\xbb\xbf/, "") } $1=$1 { print QQ $0 QQ }' >> "${DEST}/language-codes-full.csv"
+    awk -F'|' 'NR==1 { sub(/^\xef\xbb\xbf/, "") } { print "\"" $1 "\",\"" $2 "\",\"" $3 "\",\"" $4 "\",\"" $5 "\"" }' "${SRC}/${COPY}" >> "${DEST}/language-codes-full.csv"
 
     # Only alpha2
     echo '"alpha2","English"' > "${DEST}/language-codes.csv"
-    cat "${SRC}/${COPY}" | awk -F'|' 'NR==1 { sub(/^\xef\xbb\xbf/, "") } $3 { printf "\"%s\",\"%s\"\n", $3, $4 }' | sort >> "${DEST}/language-codes.csv"
-
+    awk -F'|' '$3 { printf "\"%s\",\"%s\"\n", $3, $4 }' "${SRC}/${COPY}" | sort >> "${DEST}/language-codes.csv"
+    
     # Only alpha3-b with corresponding alpha2
     echo '"alpha3-b","alpha2","English"' > "${DEST}/language-codes-3b2.csv"
-    cat "${SRC}/${COPY}" | awk -F'|' 'NR==1 { sub(/^\xef\xbb\xbf/, "") } $3 { printf "\"%s\",\"%s\",\"%s\"\n", $1, $3, $4 }' | sort >> "${DEST}/language-codes-3b2.csv"
+    awk -F'|' 'NR==1 { sub(/^\xef\xbb\xbf/, "") } $1 && $3 { printf "\"%s\",\"%s\",\"%s\"\n", $1, $3, $4 }' "${SRC}/${COPY}" >> "${DEST}/language-codes-3b2.csv"
 
     if [[ ${KEEP} == true ]]; then
         # Log source location
