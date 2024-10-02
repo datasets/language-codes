@@ -35,10 +35,11 @@ jobs:
     - name: Remove unnecessary files
       run: |
         find . -name "*.md" ! -name "README.md" -exec rm -v {} +
-        find . -name "main" ! -name "README.md" -exec rm -v {} +
-        find . -name "common" ! -name "README.md" -exec rm -v {} +
-        find . -name "LICENSE" ! -name "README.md" -exec rm -v {} +
         find . -name "*.zip" -exec rm -v {} +
+        
+        rm -rf common
+        rm -rf LICENSE
+        rm -rf main
 
     # Step 6: Commit and push the changes
     - name: Commit and Push
