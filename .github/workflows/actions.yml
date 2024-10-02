@@ -25,14 +25,21 @@ jobs:
 
     # Step 3: Run the language-codes.sh script
     - name: Run language-codes.sh
-      run: ./language-codes.sh
+      run: ./scripts/language-codes.sh
 
     # Step 4: Run the PHP script
     - name: Run PHP Script
-      run: php ietf-lanGen.php
+      run: php scripts/ietf-lanGen.php
 
-    # Step 5: Install npm packages and push data using data-cli
-    - name: Install data-cli and push data
+    # Step 5: Commit and push the changes
+    - name: Commit and Push
       run: |
-        npm install data-cli --global
-        data push
+        git config --global user.name "GitHub Action"
+        git config --global user.email "actions@users.noreply.github.com"
+        git add -A
+        if git diff-index --quiet HEAD --; then
+          echo "No changes to commit"
+        else
+          git commit -m "Update data"
+          git push
+        fi
