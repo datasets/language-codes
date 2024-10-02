@@ -1,0 +1,55 @@
+name: PHP Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Checkout the repository
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Step 2: Download and unzip the CLDR core.zip
+    - name: Download CLDR core.zip
+      if: github.ref == 'refs/heads/main'
+      run: |
+        wget http://www.unicode.org/Public/cldr/latest/core.zip
+        unzip core.zip
+        mv common/main/ ./
+        rm -rf data/
+
+    # Step 3: Run the language-codes.sh script
+    - name: Run language-codes.sh
+      run: ./scripts/language-codes.sh
+
+    # Step 4: Run the PHP script
+    - name: Run PHP Script
+      run: php scripts/ietf-lanGen.php
+
+    # Step 5: Remove unnecessary files
+    - name: Remove unnecessary files
+      run: |
+        find . -name "*.md" ! -name "README.md" -exec rm -v {} +
+        find . -name "*.zip" -exec rm -v {} +
+        
+        rm -rf common
+        rm -rf LICENSE
+        rm -rf main
+
+    # Step 6: Commit and push the changes
+    - name: Commit and Push
+      run: |
+        git config --global user.name "GitHub Action"
+        git config --global user.email "actions@users.noreply.github.com"
+        git add -A
+        if git diff-index --quiet HEAD --; then
+          echo "No changes to commit"
+        else
+          git commit -m "Update data"
+          git push
+        fi
