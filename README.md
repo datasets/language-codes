@@ -1,3 +1,5 @@
+## Description
+
 Comprehensive language code information, consisting of ISO 639-1, ISO 639-2 and IETF language types.
 
 ## Data
@@ -32,8 +34,7 @@ that into the `/main` folder of http://www.unicode.org/Public/cldr/latest/core.z
 
 ## Preparation
 
-This package includes a bash script to fetch current language code information and adjust the formatting.
-The file `ietf-language-tags.csv` is obtained with `ietf-lanGen.php`.
+This dataset is automatically updated using Github Workflows using scripts to gather `ietf-language-tags.csv` and different `language-codes` data.
 
 ## License
 
