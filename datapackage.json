@@ -3,7 +3,7 @@
   "title": "ISO Language Codes (639-1 and 693-2) and IETF Language Types",
   "sources": [
     {
-      "name":"Library of Congress",
+      "name": "Library of Congress",
       "path": "http://www.loc.gov/standards/iso639-2/iso639jac.html",
       "title": "Library of Congress"
     },
@@ -29,15 +29,15 @@
         "fields": [
           {
             "name": "alpha2",
-            "description":"2 letter alpha-2 code",
+            "description": "2 letter alpha-2 code",
             "type": "string"
           },
           {
             "name": "English",
-            "description":"English name of language",
+            "description": "English name of language",
             "type": "string"
           }
-	]
+        ]
       }
     },
     {
@@ -48,20 +48,20 @@
         "fields": [
           {
             "name": "alpha3-b",
-            "description":"3 letter alpha-3 bibliographic code",
+            "description": "3 letter alpha-3 bibliographic code",
             "type": "string"
           },
           {
             "name": "alpha2",
-            "description":"2 letter alpha-2 code",
+            "description": "2 letter alpha-2 code",
             "type": "string"
           },
           {
             "name": "English",
-            "description":"English name of language",
+            "description": "English name of language",
             "type": "string"
           }
-	]
+        ]
       }
     },
     {
@@ -72,27 +72,27 @@
         "fields": [
           {
             "name": "alpha3-b",
-            "description":"3 letter alpha-3 bibliographic code",
+            "description": "3 letter alpha-3 bibliographic code",
             "type": "string"
           },
           {
             "name": "alpha3-t",
-            "description":"3 letter alpha-3 terminologic code (when given)",
+            "description": "3 letter alpha-3 terminologic code (when given)",
             "type": "string"
           },
           {
             "name": "alpha2",
-            "description":"2 letter alpha-2 code (when given)",
+            "description": "2 letter alpha-2 code (when given)",
             "type": "string"
           },
           {
             "name": "English",
-            "description":"English name of language",
+            "description": "English name of language",
             "type": "string"
           },
           {
             "name": "French",
-            "description":"French name of language",
+            "description": "French name of language",
             "type": "string"
           }
         ]
@@ -107,37 +107,37 @@
         "fields": [
           {
             "name": "lang",
-            "description":"IANA/Unicode language-tag-extension",
+            "description": "IANA/Unicode language-tag-extension",
             "type": "string"
           },
           {
             "name": "langType",
-            "description":"ISO 2 letter alpha-2 language code",
+            "description": "ISO 2 letter alpha-2 language code",
             "type": "string"
           },
           {
             "name": "territory",
-            "description":"ISO3166-1-Alpha-2 country code or cldr territory code where 001 is the World and 150 is Europe",
+            "description": "ISO3166-1-Alpha-2 country code or cldr territory code where 001 is the World and 150 is Europe",
             "type": "string"
           },
           {
             "name": "revGenDate",
-            "description":"revision date (format ISO data)",
+            "description": "revision date (format ISO data)",
             "type": "string"
           },
           {
             "name": "defs",
-            "description":"number of definitions",
+            "description": "number of definitions",
             "type": "integer"
           },
           {
             "name": "dftLang",
-            "description":"indicate the default-language, as unicode-cldr",
+            "description": "indicate the default-language, as unicode-cldr",
             "type": "boolean"
           },
           {
             "name": "file",
-            "description":"file-name of the locale descriptor",
+            "description": "file-name of the locale descriptor",
             "type": "string"
           }
         ]
@@ -149,25 +149,38 @@
       "title": "List of all countries (ISO 3166-1)",
       "path": "/core/country-list",
       "publisher": "core",
-      "formats": ["CSV", "JSON"]
+      "formats": [
+        "CSV",
+        "JSON"
+      ]
     },
     {
       "title": "Country codes",
       "path": "/core/country-codes",
       "publisher": "core",
-      "formats": ["CSV", "JSON"]
+      "formats": [
+        "CSV",
+        "JSON"
+      ]
     },
     {
       "title": "Continent codes",
       "path": "/core/continent-codes",
       "publisher": "core",
-      "formats": ["CSV", "JSON"]
+      "formats": [
+        "CSV",
+        "JSON"
+      ]
     },
     {
       "title": "UN-LOCODE Codelist",
       "path": "/core/un-locode",
       "publisher": "core",
-      "formats": ["CSV", "JSON"]
+      "formats": [
+        "CSV",
+        "JSON"
+      ]
     }
-  ]
+  ],
+  "collection": "reference-data"
 }
