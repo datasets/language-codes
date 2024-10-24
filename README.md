@@ -1,3 +1,5 @@
+<a href="https://datahub.io/core/language-codes"><img src="https://badgen.net/badge/icon/View%20on%20datahub.io/orange?icon=https://datahub.io/datahub-cube-badge-icon.svg&label&scale=1.25)" alt="badge" /></a>
+
 ## Description
 
 Comprehensive language code information, consisting of ISO 639-1, ISO 639-2 and IETF language types.
