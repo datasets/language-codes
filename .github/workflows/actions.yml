@@ -1,9 +1,15 @@
 name: PHP Workflow
 
 on:
+  schedule:
+    - cron: '0 2 * * 1'
+  workflow_dispatch:
   push:
     branches:
       - main
+
+permissions:
+  contents: write
 
 jobs:
   build:
