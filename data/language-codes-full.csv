@@ -163,7 +163,7 @@
 "got","","","Gothic","gothique"
 "grb","","","Grebo","grebo"
 "grc","","","Greek, Ancient (to 1453)","grec ancien (jusqu'à 1453)"
-"gre","ell","el","Greek, Modern (1453-)","grec moderne (après 1453)"
+"gre","ell","el","Modern Greek (1453-)","grec moderne (1453-)"
 "grn","","gn","Guarani","guarani"
 "gsw","","","Swiss German; Alemannic; Alsatian","suisse alémanique; alémanique; alsacien"
 "guj","","gu","Gujarati","goudjrati"
@@ -302,17 +302,17 @@
 "nap","","","Neapolitan","napolitain"
 "nau","","na","Nauru","nauruan"
 "nav","","nv","Navajo; Navaho","navaho"
-"nbl","","nr","Ndebele, South; South Ndebele","ndébélé du Sud"
-"nde","","nd","Ndebele, North; North Ndebele","ndébélé du Nord"
+"nbl","","nr","South Ndebele","ndébélé du Sud"
+"nde","","nd","North Ndebele","ndébélé du Nord"
 "ndo","","ng","Ndonga","ndonga"
 "nds","","","Low German; Low Saxon; German, Low; Saxon, Low","bas allemand; bas saxon; allemand, bas; saxon, bas"
 "nep","","ne","Nepali","népalais"
-"new","","","Nepal Bhasa; Newari","nepal bhasa; newari"
+"new","","","Nepal Bhasa; Newar; Newari","nepal bhasa; néwar; newari"
 "nia","","","Nias","nias"
 "nic","","","Niger-Kordofanian languages","nigéro-kordofaniennes, langues"
 "niu","","","Niuean","niué"
-"nno","","nn","Norwegian Nynorsk; Nynorsk, Norwegian","norvégien nynorsk; nynorsk, norvégien"
-"nob","","nb","Bokmål, Norwegian; Norwegian Bokmål","norvégien bokmål"
+"nno","","nn","Norwegian Nynorsk","norvégien nynorsk"
+"nob","","nb","Norwegian Bokmål","norvégien bokmål"
 "nog","","","Nogai","nogaï; nogay"
 "non","","","Norse, Old","norrois, vieux"
 "nor","","no","Norwegian","norvégien"
