@@ -38,7 +38,8 @@
             "type": "string"
           }
         ]
-      }
+      },
+      "description": "ISO 639-1 two-letter language codes with English language names for all official ISO languages."
     },
     {
       "name": "language-codes-3b2",
@@ -62,7 +63,8 @@
             "type": "string"
           }
         ]
-      }
+      },
+      "description": "ISO 639-2 language codes with both the three-letter bibliographic code (alpha-3-b) and the two-letter code (alpha-2), plus English language names."
     },
     {
       "name": "language-codes-full",
@@ -96,7 +98,8 @@
             "type": "string"
           }
         ]
-      }
+      },
+      "description": "Comprehensive ISO 639-2 language code list with alpha-3 bibliographic and terminological codes, alpha-2 codes, and language names in both English and French."
     },
     {
       "name": "ietf-language-tags",
@@ -141,7 +144,8 @@
             "type": "string"
           }
         ]
-      }
+      },
+      "description": "IETF BCP 47 language tags from the Unicode CLDR project, including language subtags, territory codes, revision dates, and default language indicators."
     }
   ],
   "related": [
