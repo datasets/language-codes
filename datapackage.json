@@ -1,16 +1,17 @@
 {
   "name": "language-codes",
-  "title": "ISO Language Codes (639-1 and 693-2) and IETF Language Types",
+  "title": "ISO Language Codes (639-1 and 639-2) and IETF Language Types",
+  "description": "Comprehensive language code information including ISO 639-1 (two-letter), ISO 639-2 (three-letter bibliographic and terminologic) codes, and IETF language tags from the Unicode CLDR.",
   "sources": [
     {
       "name": "Library of Congress",
-      "path": "http://www.loc.gov/standards/iso639-2/iso639jac.html",
-      "title": "Library of Congress"
+      "path": "http://www.loc.gov/standards/iso639-2/ISO-639-2_utf-8.txt",
+      "title": "Library of Congress ISO 639-2 Registration Authority"
     },
     {
       "name": "Unicode",
       "path": "http://cldr.unicode.org/",
-      "title": "Unicode"
+      "title": "Unicode Common Locale Data Repository (CLDR)"
     }
   ],
   "licenses": [
@@ -24,6 +25,7 @@
     {
       "name": "language-codes",
       "path": "data/language-codes.csv",
+      "description": "ISO 639-1 two-letter language codes and their English names (184 languages).",
       "mediatype": "text/csv",
       "schema": {
         "fields": [
@@ -43,6 +45,7 @@
     {
       "name": "language-codes-3b2",
       "path": "data/language-codes-3b2.csv",
+      "description": "Languages with both ISO 639-2 bibliographic (three-letter) and ISO 639-1 (two-letter) codes, limited to the 184 languages that have an alpha-2 code.",
       "mediatype": "text/csv",
       "schema": {
         "fields": [
@@ -67,6 +70,7 @@
     {
       "name": "language-codes-full",
       "path": "data/language-codes-full.csv",
+      "description": "All ISO 639-2 languages with bibliographic and terminologic three-letter codes, optional two-letter alpha-2 code, and English and French names (487 entries).",
       "mediatype": "text/csv",
       "schema": {
         "fields": [
@@ -101,7 +105,7 @@
     {
       "name": "ietf-language-tags",
       "path": "data/ietf-language-tags.csv",
-      "note": "obtained from main folder of core.zip at http://www.unicode.org/Public/cldr",
+      "description": "IETF language tags derived from the Unicode CLDR core.zip (main/ folder at http://www.unicode.org/Public/cldr/latest/core.zip), with language type, territory, revision date, definition count, and default-language flag.",
       "mediatype": "text/csv",
       "schema": {
         "fields": [
@@ -122,8 +126,9 @@
           },
           {
             "name": "revGenDate",
-            "description": "revision date (format ISO data)",
-            "type": "string"
+            "description": "Revision date of the CLDR locale file (YYYY-MM-DD); empty when not specified in the source XML.",
+            "type": "date",
+            "format": "default"
           },
           {
             "name": "defs",
