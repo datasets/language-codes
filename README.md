@@ -31,8 +31,7 @@ There are four special codes: *mul*, *und*, *mis*, *zxx*; and a reserved range *
 
 ### data/ietf-language-tags.csv
 
-This file lists all IETF language tags of the official resource indicated by http://www.iana.org/assignments/language-tag-extensions-registry 
-that into the `/main` folder of http://www.unicode.org/Public/cldr/latest/core.zip (project [cldr.unicode.org](http://cldr.unicode.org)).
+This file lists all [IETF language tags](https://www.w3.org/International/articles/language-tags/) sourced from the `/main` folder of the [Unicode CLDR](http://cldr.unicode.org) core distribution (`core.zip`).
 
 ## Preparation
 
