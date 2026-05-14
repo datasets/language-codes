@@ -31,11 +31,11 @@ There are four special codes: *mul*, *und*, *mis*, *zxx*; and a reserved range *
 
 ### data/ietf-language-tags.csv
 
-This file lists all [IETF language tags](https://www.w3.org/International/articles/language-tags/) sourced from the `/main` folder of the [Unicode CLDR](http://cldr.unicode.org) core distribution (`core.zip`).
+This file lists all [IETF language tags](https://www.w3.org/International/articles/language-tags/) sourced from the [Unicode CLDR](http://cldr.unicode.org) core distribution.
 
 ## Preparation
 
-This dataset is automatically updated using Github Workflows using scripts to gather `ietf-language-tags.csv` and different `language-codes` data.
+This dataset is automatically updated via GitHub Actions, running scripts to gather `ietf-language-tags.csv` and the various `language-codes` files.
 
 ## License
 
@@ -43,4 +43,4 @@ This material is licensed by its maintainers under the [Public Domain Dedication
 
 Nevertheless, it should be noted that this material is ultimately sourced from the Library of Congress as a Registration Authority for ISO and their licensing policies are somewhat unclear. As this is a short, simple database of facts, there is a strong argument that no rights can subsist in this collection.
 
-However, if you intended to use these data in a public or commercial product, please check the original sources for any specific restrictions.
+However, if you intend to use these data in a public or commercial product, please check the original sources for any specific restrictions.
