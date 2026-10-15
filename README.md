@@ -1,47 +1,107 @@
 <a className="gh-badge" href="https://datahub.io/core/language-codes"><img src="https://badgen.net/badge/icon/View%20on%20datahub.io/orange?icon=https://datahub.io/datahub-cube-badge-icon.svg&label&scale=1.25" alt="badge" /></a>
 
-## Description
+# ISO Language Codes (639-1 and 639-2) and IETF Language Tags
 
-Comprehensive language code information, consisting of ISO 639-1, ISO 639-2 and IETF language types.
+Language codes in four CSV files: the two-letter ISO 639-1 codes, the three-letter ISO 639-2 codes (bibliographic and terminologic) with English and French names, and a list of the IETF language tags that have a locale file in the Unicode CLDR.
+
+Column definitions and types are in `datapackage.json`.
 
 ## Data
 
-Data is taken from the [Library of Congress](http://www.loc.gov/standards/iso639-2/iso639-2ra.html) as the ISO 639-2 Registration Authority, and from the [Unicode Common Locale Data Repository](http://cldr.unicode.org/).
+There are four files in `data/`.
 
-### data/language-codes.csv 
+`data/language-codes.csv` has the languages that have a two-letter code, sorted by that code.
 
-This file contains the 183 languages with __ISO 639-1__ (alpha 2 / two letter) codes and their English names.
+| Column | Meaning |
+|---|---|
+| `alpha2` | ISO 639-1 two-letter code, for example `de` |
+| `English` | English name of the language, for example `German` |
 
-### data/language-codes-3b2.csv 
+`data/language-codes-3b2.csv` has the languages that have both a three-letter bibliographic code and a two-letter code.
 
-This file contains the 183 languages with both __ISO 639-2__ (alpha 3 / three letter) bibliographic codes and ISO 639-1 codes, and their English names.
+| Column | Meaning |
+|---|---|
+| `alpha3-b` | ISO 639-2 three-letter bibliographic code, for example `ger` |
+| `alpha2` | ISO 639-1 two-letter code, for example `de` |
+| `English` | English name of the language |
 
-### data/language-codes-full.csv
+`data/language-codes-full.csv` has every entry of the ISO 639-2 list.
 
-This file is more exhaustive.
+| Column | Meaning |
+|---|---|
+| `alpha3-b` | ISO 639-2 three-letter bibliographic code, for example `ger` |
+| `alpha3-t` | ISO 639-2 three-letter terminologic code, for example `deu`. Empty when the language has no separate terminologic code |
+| `alpha2` | ISO 639-1 two-letter code. Empty when the language has none |
+| `English` | English name of the language |
+| `French` | French name of the language |
 
-It contains all languages with __ISO 639-2__ (alpha 3 / three letter) codes, the respective ISO 639-1 codes (if present), as well as the English and French name of each language.
+Every language has a bibliographic code, but only a few have a terminologic code. For example, German (Part 1: `de`) has two codes in Part 2: `ger` (bibliographic) and `deu` (terminologic). English has only one code in Part 2: `eng`. See how the parts of ISO 639 relate in [Wikipedia](https://en.wikipedia.org/wiki/ISO_639#Relations_between_the_sets).
 
-There are two versions of the three letter codes: bibliographic and terminologic. Each language has a bibliographic code but only a few languages have terminologic codes. Terminologic codes are chosen to be similar to the corresponding ISO 639-1 two letter codes.
+`data/ietf-language-tags.csv` has one row for each locale file in the Unicode CLDR core data. It does not list every valid language tag.
 
-For example, the German language (Part 1: `de`) has two codes in Part 2: `ger` (bibliographic) and `deu` (terminologic). English has only one code in Part 2: `eng`. See the section on how the ISO 639 parts relate in [Wikipedia](https://en.wikipedia.org/wiki/ISO_639#Relations_between_the_sets).
+| Column | Meaning |
+|---|---|
+| `lang` | [Language tag](https://www.w3.org/International/articles/language-tags/) made from the file name, with `-` instead of `_`, for example `az-Latn-AZ`. The file `root.xml` gives `root` |
+| `langType` | Language code, 2 or 3 letters (for example `aa`, `agq`), or `root` |
+| `territory` | Country code (for example `DJ`) or CLDR region code (for example `001` for the world, `150` for Europe). Empty when the file has no territory |
+| `revGenDate` | Date the file was generated. Always empty, see below |
+| `defs` | Number of top-level sections in the file, not counting its identity section |
+| `dftLang` | Meant to flag the default locale of a language. Always `0`, see below |
+| `file` | Name of the CLDR locale file, for example `aa_DJ.xml` |
 
-There are four special codes: *mul*, *und*, *mis*, *zxx*; and a reserved range *qaa-qtz*.
+### Known limitations
 
-### data/ietf-language-tags.csv
+* Names in `English` and `French` can hold several names separated by `; ` (for example `Adyghe; Adygei`). Use the codes as keys, not the names.
+* The special codes `mul`, `und`, `mis` and `zxx` are in the full file, and so is one row with the code range `qaa-qtz` ("Reserved for local use"). That row is not a normal three-letter code.
+* Nearly every `French` name in `language-codes-full.csv` ends with a carriage return (`\r`) inside the quotes. Remove it after reading: `df["French"] = df["French"].str.rstrip("\r")`.
+* `territory` in `ietf-language-tags.csv` can be `NA`, the code for Namibia (for example `en-NA`). pandas reads `NA` as a missing value by default. The two-letter language code `na` (Nauru) in the other files is not affected, because pandas only treats upper case `NA` as missing.
+* `territory` can also be a three-digit CLDR code with leading zeros (`001`). Read it as text.
+* With pandas, read the files as text and keep empty cells empty: `pd.read_csv("data/ietf-language-tags.csv", dtype=str, keep_default_na=False)`. This keeps `NA`, `001` and the empty cells as they are in the file. Without it, `NA` becomes a missing value.
+* `dftLang` is always `0`. The update script compares file names written with underscores (`af_ZA`) with a list written with hyphens (`af-ZA`), so nothing matches. Do not use it.
+* `revGenDate` is always empty, because the current CLDR locale files carry no generation date.
+* `alpha3-t` and `alpha2` in the full file are empty for many rows. `alpha3-t` is empty unless the language has a terminologic code.
 
-This file lists the 1,122 locale files found in the [Unicode CLDR](http://cldr.unicode.org) core data. For each one it gives the [language tag](https://www.w3.org/International/articles/language-tags/), language, territory and file name. It does not list every valid language tag.
+## Data sources
+
+* [ISO 639-2 code list][loc-list], published by the [Library of Congress][loc], the ISO 639-2 Registration Authority. It provides the codes and the English and French names in the three `language-codes` files. Licence: unclear (see [License](#license)).
+* [Unicode Common Locale Data Repository (CLDR)][cldr], downloaded as [core.zip][cldr-zip]. It provides the locale file names and a few attributes in `ietf-language-tags.csv`. Licence: [Unicode License v3][unicode-licence]. The notice is in [ATTRIBUTION.txt](ATTRIBUTION.txt).
+
+Changes made to the source data: `language-codes-full.csv` is the ISO 639-2 list split on its field separator into columns, with the names unchanged. `language-codes.csv` keeps only the languages that have a two-letter code, sorted by that code. `language-codes-3b2.csv` keeps only the languages that have both a bibliographic three-letter code and a two-letter code. `ietf-language-tags.csv` has one row for each CLDR locale file: tag, language, territory, generation date, number of definitions, default-language flag and file name. No CLDR names or translations are copied.
+
+Not endorsed by, or affiliated with, the Library of Congress, Unicode, Inc. or ISO.
+
+[loc]: https://www.loc.gov/standards/iso639-2/iso639-2ra.html
+[loc-list]: https://www.loc.gov/standards/iso639-2/ISO-639-2_utf-8.txt
+[cldr]: https://cldr.unicode.org/
+[cldr-zip]: https://www.unicode.org/Public/cldr/latest/core.zip
+[unicode-licence]: https://www.unicode.org/license.txt
 
 ## Preparation
 
-This dataset is automatically updated via GitHub Actions, running scripts to gather `ietf-language-tags.csv` and the various `language-codes` files.
+The scripts need `bash`, `curl`, `awk`, GNU `sed`, `wget`, `unzip` and `php`. The data is rebuilt in the same steps as the GitHub workflow, from the root of the repository:
+
+```
+wget https://www.unicode.org/Public/cldr/latest/core.zip
+unzip core.zip
+mv common/main/ ./
+./scripts/language-codes.sh -f
+php scripts/ietf-lanGen.php
+```
+
+`scripts/language-codes.sh` downloads the Library of Congress list and writes the three `language-codes` files. `scripts/ietf-lanGen.php` reads the locale files in `main/` and writes `data/ietf-language-tags.csv`. It also downloads a list of default locales from the `unicode-cldr/cldr-core` repository to set `dftLang`. The workflow then deletes the CLDR files it unpacked.
+
+A GitHub workflow runs this every Monday at 02:00 UTC, and on every push to `main`. It commits the data files if they changed.
 
 ## License
 
-`data/ietf-language-tags.csv` is derived from the Unicode Common Locale Data Repository (CLDR). It is under the [Unicode License v3](https://www.unicode.org/license.txt). The copyright and permission notice is in [ATTRIBUTION.txt](ATTRIBUTION.txt).
+The licence of the ISO 639-2 list is unclear. What we checked:
 
-The three `data/language-codes*.csv` files come from the Library of Congress ISO 639-2 list. The reuse terms of that list are UNCLEAR. We found no licence on the list itself, on its code-list page, on the Registration Authority page or in its FAQ. ISO says its language codes can be used free of charge. That does not clearly cover republishing the list with the language names. We could not establish more than this.
+* The list file and the code list page of the Library of Congress carry no copyright or licence notice, and neither do the Registration Authority page or the FAQ.
+* The [Library of Congress legal page](https://www.loc.gov/homepage/legal.html) says that it generally does not own the rights to the materials it shows and that you should decide for yourself whether an item is protected. It does not mention this list.
+* ISO states that it "allows free-of-charge use of its country, currency and language codes from ISO 3166, ISO 4217 and ISO 639" (read on an archived copy of the ISO page, December 2024; ISO's current page could not be read). ISO also says that reproducing its materials needs its written permission.
 
-The maintainers of this repository place their own work, the selection and formatting of the data, under the [Public Domain Dedication and License (PDDL)](http://opendatacommons.org/licenses/pddl/1.0/). This covers nothing more.
+We could not establish whether the full list, with the English and French names, may be republished or used commercially. If you plan commercial use, check the terms of the Library of Congress and ISO first.
 
-If you intend to use these data in a public or commercial product, please check the original sources for any specific restrictions.
+`data/ietf-language-tags.csv` is derived from the Unicode CLDR, which is under the [Unicode License v3](https://www.unicode.org/license.txt). That licence allows use, copying and sale if the copyright and permission notice stays with the data. The notice is in [ATTRIBUTION.txt](ATTRIBUTION.txt).
+
+The maintainers place only their own work (the selection and formatting of the data) under the [Public Domain Dedication and License (PDDL)](https://opendatacommons.org/licenses/pddl/1.0/). This does not cover the ISO 639-2 list or the CLDR. See also [ATTRIBUTION.txt](ATTRIBUTION.txt).

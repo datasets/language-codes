@@ -42,12 +42,8 @@ not be used in advertising or otherwise to promote the sale, use or other
 dealings in these Data Files or Software without prior written
 authorization of the copyright holder.
 
-Contains information from the ISO 639-2 code list published by the Library of Congress, the ISO 639-2 Registration Authority (https://www.loc.gov/standards/iso639-2/). The licence of this list is unclear. We found none stated.
+Contains information from the ISO 639-2 code list published by the Library of Congress, the ISO 639-2 Registration Authority (https://www.loc.gov/standards/iso639-2/iso639-2ra.html). Licence: unclear (none stated by the source).
 
-Changes made to the source data:
-- data/ietf-language-tags.csv has one row for each locale file found in the CLDR core data (common/main). The columns are the locale tag, language, territory, generation date, number of definitions, a default-language flag and the file name. No CLDR text, names or translations are copied.
-- data/language-codes-full.csv is the ISO 639-2 list split on its field separator into columns. The names are not changed.
-- data/language-codes.csv keeps only the languages that have an alpha-2 code, with their English names, sorted by alpha-2 code.
-- data/language-codes-3b2.csv keeps only the languages that have both a bibliographic alpha-3 code and an alpha-2 code, with their English names.
+Changes made to the source data: language-codes-full.csv is the ISO 639-2 list split on its field separator into columns, with the names unchanged. language-codes.csv keeps only the languages that have a two-letter code, sorted by that code. language-codes-3b2.csv keeps only the languages that have both a bibliographic three-letter code and a two-letter code. ietf-language-tags.csv has one row for each CLDR locale file: tag, language, territory, generation date, number of definitions, default-language flag and file name. No CLDR names or translations are copied.
 
-Not endorsed by, or affiliated with, Unicode, Inc., the Library of Congress or ISO.
+Not endorsed by, or affiliated with, the Library of Congress, Unicode, Inc. or ISO.
