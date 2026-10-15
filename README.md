@@ -10,11 +10,11 @@ Data is taken from the [Library of Congress](http://www.loc.gov/standards/iso639
 
 ### data/language-codes.csv 
 
-This file contains the 184 languages with __ISO 639-1__ (alpha 2 / two letter) codes and their English names.
+This file contains the 183 languages with __ISO 639-1__ (alpha 2 / two letter) codes and their English names.
 
 ### data/language-codes-3b2.csv 
 
-This file contains the 184 languages with both __ISO 639-2__ (alpha 3 / three letter) bibliographic codes and ISO 639-1 codes, and their English names.
+This file contains the 183 languages with both __ISO 639-2__ (alpha 3 / three letter) bibliographic codes and ISO 639-1 codes, and their English names.
 
 ### data/language-codes-full.csv
 
