@@ -146,7 +146,7 @@
           },
           {
             "name": "dftLang",
-            "description": "indicate the default-language, as unicode-cldr. Currently always 0 because of a bug in the update script: it compares file names written with underscores (af_ZA) with a list written with hyphens (af-ZA).",
+            "description": "1 if CLDR lists this locale as the default content of its language (for example af-ZA), 0 otherwise. A few entries in CLDR's list have no locale file in the core download, so they have no row.",
             "type": "boolean"
           },
           {

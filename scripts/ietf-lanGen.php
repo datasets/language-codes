@@ -32,7 +32,7 @@ foreach(scandir($dir) as $file) if (preg_match('/^(.+)\.xml$/',$file,$m)) {
     $territory  = $xp->evaluate("string(/ldml/identity/territory/@type)");
     $defs       = $xp->evaluate("count(/ldml/*[not(self::identity)])");
     $revGenDate = preg_replace('/^[^\d]+(\d+\-\d+\-\d+).+$/','$1',$revGenDate);
-    $isDftLang  = in_array(strtolower($lang),$cldrCoreDft)? '1': '0'; // yes or not
+    $isDftLang  = in_array(strtolower(strtr($lang,'_','-')),$cldrCoreDft)? '1': '0'; // yes or not
     $lang = strtr($lang,'_','-');
 		
 		# open ietf-languange-tags.csv and append data

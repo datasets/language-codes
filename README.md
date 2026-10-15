@@ -46,7 +46,7 @@ Every language has a bibliographic code, but only a few have a terminologic code
 | `territory` | Country code (for example `DJ`) or CLDR region code (for example `001` for the world, `150` for Europe). Empty when the file has no territory |
 | `revGenDate` | Date the file was generated. Always empty, see below |
 | `defs` | Number of top-level sections in the file, not counting its identity section |
-| `dftLang` | Meant to flag the default locale of a language. Always `0`, see below |
+| `dftLang` | `1` if CLDR lists the locale as the default content of its language (for example `af-ZA` for Afrikaans), `0` otherwise |
 | `file` | Name of the CLDR locale file, for example `aa_DJ.xml` |
 
 ### Known limitations
@@ -57,7 +57,7 @@ Every language has a bibliographic code, but only a few have a terminologic code
 * `territory` in `ietf-language-tags.csv` can be `NA`, the code for Namibia (for example `en-NA`). pandas reads `NA` as a missing value by default. The two-letter language code `na` (Nauru) in the other files is not affected, because pandas only treats upper case `NA` as missing.
 * `territory` can also be a three-digit CLDR code with leading zeros (`001`). Read it as text.
 * With pandas, read the files as text and keep empty cells empty: `pd.read_csv("data/ietf-language-tags.csv", dtype=str, keep_default_na=False)`. This keeps `NA`, `001` and the empty cells as they are in the file. Without it, `NA` becomes a missing value.
-* `dftLang` is always `0`. The update script compares file names written with underscores (`af_ZA`) with a list written with hyphens (`af-ZA`), so nothing matches. Do not use it.
+* `dftLang` comes from CLDR's list of default content. A few entries in that list have no locale file in the CLDR core download, so they have no row here.
 * `revGenDate` is always empty, because the current CLDR locale files carry no generation date.
 * `alpha3-t` and `alpha2` in the full file are empty for many rows. `alpha3-t` is empty unless the language has a terminologic code.
 
