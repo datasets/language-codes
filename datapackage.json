@@ -16,16 +16,21 @@
   ],
   "licenses": [
     {
+      "name": "Unicode-3.0",
+      "path": "https://www.unicode.org/license.txt",
+      "title": "Unicode License v3 (applies to data/ietf-language-tags.csv)"
+    },
+    {
       "name": "ODC-PDDL-1.0",
-      "path": "http://opendatacommons.org/licenses/pddl/",
-      "title": "Open Data Commons Public Domain Dedication and License v1.0"
+      "path": "https://opendatacommons.org/licenses/pddl/1.0/",
+      "title": "Open Data Commons Public Domain Dedication and License v1.0. Covers only the maintainers' own selection and formatting. The terms of the Library of Congress ISO 639-2 list (the three language-codes files) are unclear."
     }
   ],
   "resources": [
     {
       "name": "language-codes",
       "path": "data/language-codes.csv",
-      "description": "ISO 639-1 two-letter language codes and their English names (184 languages).",
+      "description": "ISO 639-1 two-letter language codes and their English names (183 languages).",
       "mediatype": "text/csv",
       "schema": {
         "fields": [
@@ -45,7 +50,7 @@
     {
       "name": "language-codes-3b2",
       "path": "data/language-codes-3b2.csv",
-      "description": "Languages with both ISO 639-2 bibliographic (three-letter) and ISO 639-1 (two-letter) codes, limited to the 184 languages that have an alpha-2 code.",
+      "description": "Languages with both ISO 639-2 bibliographic (three-letter) and ISO 639-1 (two-letter) codes, limited to the 183 languages that have an alpha-2 code.",
       "mediatype": "text/csv",
       "schema": {
         "fields": [
@@ -116,7 +121,7 @@
           },
           {
             "name": "langType",
-            "description": "ISO 2 letter alpha-2 language code",
+            "description": "language code (2 or 3 letters, plus the value root)",
             "type": "string"
           },
           {
@@ -126,7 +131,7 @@
           },
           {
             "name": "revGenDate",
-            "description": "Revision date of the CLDR locale file (YYYY-MM-DD); empty when not specified in the source XML.",
+            "description": "Revision date of the CLDR locale file (YYYY-MM-DD); empty when not specified in the source XML. Currently always empty.",
             "type": "date",
             "format": "default"
           },
@@ -137,7 +142,7 @@
           },
           {
             "name": "dftLang",
-            "description": "indicate the default-language, as unicode-cldr",
+            "description": "indicate the default-language, as unicode-cldr. Currently always 0 because of a bug in the update script: it compares file names written with underscores (af_ZA) with a list written with hyphens (af-ZA).",
             "type": "boolean"
           },
           {
